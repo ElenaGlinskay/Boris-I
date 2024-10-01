@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Roles</title>
+</head>
+<body>
+    <h1>Roles</h1>
+    <form method="POST">
+        <input type="text" name="role_name" placeholder="Nombre del rol" required>
+        <button type="submit">Agregar Rol</button>
+    </form>
+    <h2>Roles existentes:</h2>
+    <ul>
+        {% for role in roles %}
+        <li>{{ role.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

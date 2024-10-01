@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Gestionar Citas</h2>
+    <form method="POST">
+        <div>
+            <label for="paciente_id">ID del Paciente:</label>
+            <input type="text" id="paciente_id" name="paciente_id" required>
+        </div>
+        <div>
+            <label for="medico_id">ID del Médico:</label>
+            <input type="text" id="medico_id" name="medico_id" required>
+        </div>
+        <div>
+            <label for="especialidad_id">ID de la Especialidad:</label>
+            <input type="text" id="especialidad_id" name="especialidad_id" required>
+        </div>
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="datetime-local" id="fecha" name="fecha" required>
+        </div>
+        <div>
+            <button type="submit">Crear Cita</button>
+        </div>
+    </form>
+    
+    <h3>Citas Existentes</h3>
+    <ul>
+        {% for cita in citas %}
+            <li>Cita de {{ cita.paciente_id.nombre }} con {{ cita.medico_id.nombre }} el {{ cita.fecha }} - Estado: {{ cita.estado }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <script>
+        async function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert("Inicio de sesión exitoso. Token: " + data.token);
+            } else {
+                alert(data.message);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Iniciar Sesión</h1>
+    <input type="text" id="username" placeholder="Usuario" required>
+    <input type="password" id="password" placeholder="Contraseña" required>
+    <button onclick="login()">Iniciar Sesión</button>
+</body>
+</html>
