@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Doctores</title>
+  </head>
+  <body>
+    <h1>Lista de Doctores</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre de Usuario</th>
+          <th>Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for doctor in doctors %}
+        <tr>
+          <td>{{ doctor.username }}</td>
+          <td>{{ doctor.role }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

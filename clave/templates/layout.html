@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mi Aplicación Flask</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        {% if not session.username %}
+        <li><a href="/">Sobre Nosotros</a></li>
+        <li><a href="/sobre_nosotros">Nuestos Servicios</a></li>
+        {% endif %}
+        <li><a href="/servicios">Servicios</a></li>
+        <li><a href="/especialidades">Especialidades</a></li>
+
+        <li><a href="/docs">Doctores</a></li>
+        {% if session.role == "admin" %}
+        <li><a href="/roles">Roles</a></li>
+        {% endif %} {% if session.username %}
+        <li><a href="/logout">Cerrar Sesión</a></li>
+        {% else %}
+        <li><a href="/login">Iniciar Sesión</a></li>
+        <li><a href="/registro">Registro</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    <div>{% include page %}</div>
+  </body>
+</html>
